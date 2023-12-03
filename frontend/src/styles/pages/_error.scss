@@ -1,0 +1,30 @@
+.error {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    font-size: 100px;
+    font-weight: 700;
+    margin: 0;
+    color: $color-primary;
+  }
+  p {
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0;
+    color: $color-primary;
+  }
+  a {
+    color: $color-primary;
+    opacity: 0.5;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

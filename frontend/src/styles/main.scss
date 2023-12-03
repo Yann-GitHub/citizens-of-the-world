@@ -10,6 +10,7 @@
 @import 'base/base';
 
 // Layout
+@import 'layout/sharedLayout';
 @import 'layout/header';
 @import 'layout/footer';
 
@@ -18,3 +19,6 @@
 
 // Pages
 @import 'pages/home';
+@import 'pages/error';
+@import 'pages/country';
+@import 'pages/allCitizens';

@@ -1,0 +1,21 @@
+.header {
+  background-color: $color-primary;
+  color: #fff;
+  height: 95px;
+  h1 {
+    margin: 0;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 42px;
+    letter-spacing: 0em;
+    text-align: left;
+    padding: 25px;
+  }
+  a {
+    color: #fff;
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
