@@ -1,0 +1,76 @@
+{
+  "kind": "collectionType",
+  "collectionName": "countries",
+  "info": {
+    "singularName": "country",
+    "pluralName": "countries",
+    "displayName": "Country",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nameCommon": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "nameOfficial": {
+      "type": "string"
+    },
+    "capital": {
+      "type": "string",
+      "unique": true
+    },
+    "region": {
+      "type": "string"
+    },
+    "subregion": {
+      "type": "string"
+    },
+    "flag": {
+      "type": "string"
+    },
+    "languages": {
+      "type": "string"
+    },
+    "coatOfArms": {
+      "type": "string"
+    },
+    "population": {
+      "type": "biginteger"
+    },
+    "unMember": {
+      "type": "boolean"
+    },
+    "capitalImage": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "nameCommon"
+    },
+    "latlng": {
+      "displayName": "Capital infos",
+      "type": "component",
+      "repeatable": false,
+      "component": "capital-infos.capital-infos"
+    },
+    "currencies": {
+      "displayName": "currencies",
+      "type": "component",
+      "repeatable": false,
+      "component": "currencies.currencies"
+    },
+    "linkGoogleMap": {
+      "type": "string"
+    }
+  }
+}

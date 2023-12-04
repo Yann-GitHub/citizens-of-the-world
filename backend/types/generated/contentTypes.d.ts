@@ -362,6 +362,51 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiCountryCountry extends Schema.CollectionType {
+  collectionName: 'countries';
+  info: {
+    singularName: 'country';
+    pluralName: 'countries';
+    displayName: 'Country';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    nameCommon: Attribute.String & Attribute.Required & Attribute.Unique;
+    nameOfficial: Attribute.String;
+    capital: Attribute.String & Attribute.Unique;
+    region: Attribute.String;
+    subregion: Attribute.String;
+    flag: Attribute.String;
+    languages: Attribute.String;
+    coatOfArms: Attribute.String;
+    population: Attribute.BigInteger;
+    unMember: Attribute.Boolean;
+    capitalImage: Attribute.Media;
+    slug: Attribute.UID<'api::country.country', 'nameCommon'>;
+    latlng: Attribute.Component<'capital-infos.capital-infos'>;
+    currencies: Attribute.Component<'currencies.currencies'>;
+    linkGoogleMap: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::country.country',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::country.country',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -687,6 +732,7 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::country.country': ApiCountryCountry;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;

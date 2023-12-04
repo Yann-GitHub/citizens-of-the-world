@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_capital_infos_capital_infos",
+  "info": {
+    "displayName": "capital infos",
+    "icon": "pin",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "lat": {
+      "type": "decimal"
+    },
+    "lng": {
+      "type": "decimal"
+    }
+  }
+}
