@@ -14,7 +14,8 @@ function App() {
           <Route index element={<Home />} />
           {/* <Route path="country" element={<Country />} /> */}
           <Route path="country/:countryId" element={<Country />} />
-          <Route path="all-citizens" element={<AllCitizens />} />
+          {/* <Route path="all-citizens" element={<AllCitizens />} /> */}
+          <Route path="all-citizens/:countryId" element={<AllCitizens />} />
           <Route path="*" element={<Error />} />
         </Route>
       </Routes>

@@ -24,12 +24,6 @@
       "type": "string",
       "unique": true
     },
-    "region": {
-      "type": "string"
-    },
-    "subregion": {
-      "type": "string"
-    },
     "flag": {
       "type": "string"
     },
@@ -73,11 +67,27 @@
       "type": "string"
     },
     "flagImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "citizensNumber": {
+      "type": "integer"
+    },
+    "citizens": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::citizen.citizen",
+      "mappedBy": "country"
+    },
+    "sub_continent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::sub-continent.sub-continent",
+      "inversedBy": "countries"
     }
   }
 }

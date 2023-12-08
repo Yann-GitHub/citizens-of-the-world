@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_languages_languages",
+  "info": {
+    "displayName": "languages",
+    "icon": "user",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "language1": {
+      "type": "string"
+    },
+    "language2": {
+      "type": "string"
+    }
+  }
+}

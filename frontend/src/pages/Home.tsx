@@ -7,44 +7,6 @@ import countriesService from '../services/api';
 import { Country } from '../types/country';
 import { Col, Row } from 'react-bootstrap';
 
-// type Country = {
-//   id: number;
-//   attributes: {
-//     nameCommon: string;
-//     nameOfficial: string;
-//     capital: string;
-//     capitalImage: {
-//       data: {
-//         attributes: {
-//           url: string;
-//         };
-//       };
-//     };
-//     coatOfArms: string;
-//     currencies: {
-//       id: number;
-//       name: string;
-//       symbol: string;
-//     };
-//     flag: string;
-//     languages: string;
-//     latlng: {
-//       id: number;
-//       lat: number;
-//       lng: number;
-//     }; /////////verif
-//     linkGoogleMap: string;
-//     population: number;
-//     region: string;
-//     slug: string;
-//     subregion: string;
-//     unMember: boolean;
-//     // updatedAt: Date;
-//     // createdAt: Date;
-//     // publishedAt: Date;
-//   };
-// };
-
 const Home = () => {
   // Custom hook possible
   const [initialCountries, setInitialCountries] = useState<Country[]>([]);
@@ -63,6 +25,11 @@ const Home = () => {
     navigate(`/country/${countryId}`); // Dynamic route
   };
 
+  const handleCardCitizensClick = (countryId: number) => {
+    // Navigate to the allCitizens page with the countryId
+    navigate(`/all-citizens/${countryId}`); // Dynamic route
+  };
+
   return (
     <div className="home container">
       <h1>Rencontrez des citizens du monde entier</h1>
@@ -76,7 +43,8 @@ const Home = () => {
               capitalImage={country.attributes.capitalImage.data.attributes.url}
               flag={country.attributes.flag}
               slug={country.attributes.slug}
-              onClick={() => handleCardInfosClick(country.id)} // privilégier un lien
+              onClickInfos={() => handleCardInfosClick(country.id)} // privilégier un lien
+              onClickCitizens={() => handleCardCitizensClick(country.id)} // privilégier un lien
             />
           </Col>
         ))}

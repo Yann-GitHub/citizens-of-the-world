@@ -25,11 +25,25 @@ export interface CurrenciesCurrencies extends Schema.Component {
   };
 }
 
+export interface LanguagesLanguages extends Schema.Component {
+  collectionName: 'components_languages_languages';
+  info: {
+    displayName: 'languages';
+    icon: 'user';
+    description: '';
+  };
+  attributes: {
+    language1: Attribute.String;
+    language2: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'capital-infos.capital-infos': CapitalInfosCapitalInfos;
       'currencies.currencies': CurrenciesCurrencies;
+      'languages.languages': LanguagesLanguages;
     }
   }
 }

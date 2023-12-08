@@ -47,5 +47,6 @@ export type Country = {
     slug: string;
     subregion: string;
     unMember: boolean;
+    citizensNumber: number;
   };
 };

@@ -19,9 +19,16 @@ const getAllCountries = () => {
 // };
 
 const getOneCountryById = (id: string) => {
-  const request = axios.get(`${baseURL}/countries/${id}?populate=latlng,capitalImage,currencies,flagImage`);
+  const request = axios.get(`${baseURL}/countries/${id}?populate=latlng,capitalImage,currencies,flagImage,sub_continent`);
   return request.then((response) => response.data);
 };
+
+// const getOneCountryById = (id: string) => {
+//   const request = axios.get(
+//     `${baseURL}/countries/${id}?populate[0]=sub_continent&populate[1]=latlng&populate[2]=capitalImage&populate[3]=currencies&populate[4]=flagImage`
+//   );
+//   return request.then((response) => response.data);
+// };
 
 // const getOneCountry = async (id: number) => {
 //   const response = await axios.get(`${baseURL}/countries/${id}?populate=latlng,capitalImage,currencies`);

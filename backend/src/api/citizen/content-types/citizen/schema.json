@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "citizens",
+  "info": {
+    "singularName": "citizen",
+    "pluralName": "citizens",
+    "displayName": "Citizen",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "firstname": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "date": {
+      "type": "date"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "picture": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "langue": {
+      "type": "enumeration",
+      "enum": [
+        "Anglais",
+        "Italien",
+        "Portugais",
+        "Chinois",
+        "Français"
+      ],
+      "required": true,
+      "default": "Anglais"
+    },
+    "country": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::country.country",
+      "inversedBy": "citizens"
+    }
+  }
+}

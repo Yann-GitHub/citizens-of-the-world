@@ -362,52 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiCountryCountry extends Schema.CollectionType {
-  collectionName: 'countries';
-  info: {
-    singularName: 'country';
-    pluralName: 'countries';
-    displayName: 'Country';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    nameCommon: Attribute.String & Attribute.Required & Attribute.Unique;
-    nameOfficial: Attribute.String;
-    capital: Attribute.String & Attribute.Unique;
-    region: Attribute.String;
-    subregion: Attribute.String;
-    flag: Attribute.String;
-    languages: Attribute.String;
-    coatOfArms: Attribute.String;
-    population: Attribute.BigInteger;
-    unMember: Attribute.Boolean;
-    capitalImage: Attribute.Media;
-    slug: Attribute.UID<'api::country.country', 'nameCommon'>;
-    latlng: Attribute.Component<'capital-infos.capital-infos'>;
-    currencies: Attribute.Component<'currencies.currencies'>;
-    linkGoogleMap: Attribute.String;
-    flagImage: Attribute.Media;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::country.country',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::country.country',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -723,6 +677,190 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiCitizenCitizen extends Schema.CollectionType {
+  collectionName: 'citizens';
+  info: {
+    singularName: 'citizen';
+    pluralName: 'citizens';
+    displayName: 'Citizen';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    firstname: Attribute.String;
+    lastName: Attribute.String;
+    email: Attribute.String;
+    city: Attribute.String;
+    date: Attribute.Date;
+    phoneNumber: Attribute.String;
+    picture: Attribute.Media;
+    langue: Attribute.Enumeration<
+      ['Anglais', 'Italien', 'Portugais', 'Chinois', 'Fran\u00E7ais']
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'Anglais'>;
+    country: Attribute.Relation<
+      'api::citizen.citizen',
+      'manyToOne',
+      'api::country.country'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::citizen.citizen',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::citizen.citizen',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiContinentContinent extends Schema.CollectionType {
+  collectionName: 'continents';
+  info: {
+    singularName: 'continent';
+    pluralName: 'continents';
+    displayName: 'Continent';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    image: Attribute.Media;
+    sub_continents: Attribute.Relation<
+      'api::continent.continent',
+      'oneToMany',
+      'api::sub-continent.sub-continent'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::continent.continent',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::continent.continent',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCountryCountry extends Schema.CollectionType {
+  collectionName: 'countries';
+  info: {
+    singularName: 'country';
+    pluralName: 'countries';
+    displayName: 'Country';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    nameCommon: Attribute.String & Attribute.Required & Attribute.Unique;
+    nameOfficial: Attribute.String;
+    capital: Attribute.String & Attribute.Unique;
+    flag: Attribute.String;
+    languages: Attribute.String;
+    coatOfArms: Attribute.String;
+    population: Attribute.BigInteger;
+    unMember: Attribute.Boolean;
+    capitalImage: Attribute.Media;
+    slug: Attribute.UID<'api::country.country', 'nameCommon'>;
+    latlng: Attribute.Component<'capital-infos.capital-infos'>;
+    currencies: Attribute.Component<'currencies.currencies'>;
+    linkGoogleMap: Attribute.String;
+    flagImage: Attribute.Media;
+    citizensNumber: Attribute.Integer;
+    citizens: Attribute.Relation<
+      'api::country.country',
+      'oneToMany',
+      'api::citizen.citizen'
+    >;
+    sub_continent: Attribute.Relation<
+      'api::country.country',
+      'manyToOne',
+      'api::sub-continent.sub-continent'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::country.country',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::country.country',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSubContinentSubContinent extends Schema.CollectionType {
+  collectionName: 'sub_continents';
+  info: {
+    singularName: 'sub-continent';
+    pluralName: 'sub-continents';
+    displayName: 'SubContinent';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        minLength: 5;
+        maxLength: 50;
+      }>;
+    continent: Attribute.Relation<
+      'api::sub-continent.sub-continent',
+      'manyToOne',
+      'api::continent.continent'
+    >;
+    countries: Attribute.Relation<
+      'api::sub-continent.sub-continent',
+      'oneToMany',
+      'api::country.country'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::sub-continent.sub-continent',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::sub-continent.sub-continent',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -733,13 +871,16 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::country.country': ApiCountryCountry;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::citizen.citizen': ApiCitizenCitizen;
+      'api::continent.continent': ApiContinentContinent;
+      'api::country.country': ApiCountryCountry;
+      'api::sub-continent.sub-continent': ApiSubContinentSubContinent;
     }
   }
 }
