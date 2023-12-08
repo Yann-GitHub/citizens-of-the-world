@@ -1,0 +1,56 @@
+.card-country-un {
+  background-color: #fff;
+  border-radius: 7px;
+  box-shadow: 5px 7px 15px 1px #00000040;
+  overflow: hidden;
+  height: 100%;
+
+  &__content {
+    padding: 14px;
+    padding-bottom: 20px;
+  }
+
+  &__txt {
+    padding: 0;
+    padding-left: 10px;
+    margin: 0;
+  }
+
+  // p {
+  //   padding: 0;
+  //   padding-left: 14px;
+  //   margin: 0;
+  // }
+
+  &__title {
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 15px;
+    color: $color-primary;
+  }
+
+  &__image {
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // height: 300px;
+    // margin: 0 auto;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  &__totalMembers {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-bottom: 20px;
+  }
+
+  &__realMembers {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+}

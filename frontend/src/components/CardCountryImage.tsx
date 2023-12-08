@@ -1,7 +1,12 @@
-const CardCountryImage = () => {
+type CardCountryImageProps = {
+  capitalImage?: string;
+};
+
+const CardCountryImage = ({ capitalImage }: CardCountryImageProps) => {
+  console.log(capitalImage);
   return (
-    <div>
-      <h1>CardCountryImage</h1>
+    <div className="card-country-image">
+      <img className="card-country-image__photo" src={`http://localhost:1338${capitalImage}`} alt="capital-image" />
     </div>
   );
 };

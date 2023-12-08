@@ -1,0 +1,31 @@
+.card-country-coat {
+  background-color: #fff;
+  border-radius: 7px;
+  box-shadow: 5px 7px 15px 1px #00000040;
+  height: 100%;
+
+  &__content {
+    padding: 14px;
+    padding-bottom: 20px;
+    overflow: hidden;
+  }
+
+  &__title {
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    color: $color-primary;
+    padding: 0;
+    padding-bottom: 15px;
+    margin: 0;
+  }
+  &__coat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // height: 300px;
+    // width: 100%;
+    object-fit: cover;
+    margin: 0 auto;
+  }
+}

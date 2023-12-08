@@ -1,11 +1,87 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import countriesService from '../services/api';
+
+import { Country as CountryType } from '../types/country';
+
+import iconArrowLeft from '../assets/arrow-left.svg';
+
+import CardCoatOfArms from '../components/CardCoatOfArms';
+import CardContinent from '../components/CardContinent';
+import CartUnitedNations from '../components/CardUnitedNations';
+import CardCountryImage from '../components/CardCountryImage';
+import CardCountryDetails from '../components/CardCountryDetails';
+
+// import { Container } from 'react-bootstrap';
 
 const Country = () => {
+  //   console.log('///// Country Page /////');
+  //   console.log(useParams());
+  const { countryId } = useParams();
+
+  const [country, setCountry] = useState<CountryType>();
+
+  // Ts error : Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  //   useEffect(() => {
+  //     countriesService.getOneCountryById(countryId).then((country) => {
+  //       console.log('Response fulfilled - First data fetching - Single country');
+  //       console.log(country);
+  //       setCountry(country.data);
+  //     });
+  //   }, [countryId]);
+
+  useEffect(() => {
+    if (countryId) {
+      countriesService.getOneCountryById(countryId).then((country) => {
+        console.log('Response fulfilled - First data fetching - Single country');
+        console.log(country);
+        setCountry(country.data);
+      });
+    }
+  }, [countryId]);
+
+  console.log(country);
   return (
-    <div>
-      <h1>Country</h1>
-      <p>Country page content goes here.</p>
-      <Link to="/">Return to home page</Link>
+    <div className="country">
+      <div className="country__header">
+        <Link to="/" className="country__header__link">
+          <img className="country__header__arrow" src={iconArrowLeft} alt="icon-arrow-left" />
+          Retour à l'accueil
+        </Link>
+        <h1 className="country__header__title">Informations sur le pays: {country?.attributes.nameCommon}</h1>
+      </div>
+      <div className="country__image">
+        <CardCountryImage capitalImage={country?.attributes.capitalImage.data.attributes.url} />
+      </div>
+
+      <div className="country__main">
+        <div className="country__main__cardDetails">
+          {country?.attributes && (
+            <CardCountryDetails
+              nameOfficial={country.attributes.nameOfficial}
+              nameCommon={country.attributes.nameCommon}
+              capital={country.attributes.capital}
+              population={country.attributes.population}
+              linkGoogleMap={country.attributes.linkGoogleMap}
+              languages={country.attributes.languages}
+              currencies={country.attributes.currencies}
+              latlng={country.attributes.latlng}
+              flagImage={country.attributes.flagImage.data.attributes.url}
+            />
+          )}
+        </div>
+        <div className="country__main__center">
+          <div className="country__main__center__cardUn">
+            <CartUnitedNations isMember={country?.attributes.unMember} />
+          </div>
+          <div className="country__main__center__cardCoat">
+            <CardCoatOfArms coatOfArms={country?.attributes.coatOfArms} />
+          </div>
+        </div>
+        <div className="country__main__cardContinent">
+          <CardContinent region={country?.attributes.region} subregion={country?.attributes.subregion} />
+        </div>
+      </div>
     </div>
   );
 };

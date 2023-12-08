@@ -71,6 +71,13 @@
     },
     "linkGoogleMap": {
       "type": "string"
+    },
+    "flagImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

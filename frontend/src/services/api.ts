@@ -13,14 +13,19 @@ const getAllCountries = () => {
 //   return response.data;
 // };
 
-// const getOneCountry = (name: string) => {
-//     const request = axios.get(`${baseURL}/countries?populate=latlng,capitalImage,currencies/${name}`);
-//     return request.then((response) => response.data);
-//     }
+// const getOneCountryById = (name: string) => {
+//   const request = axios.get(`${baseURL}/countries?populate=latlng,capitalImage,currencies/${name}`);
+//   return request.then((response) => response.data);
+// };
 
-const getOneCountry = async (id: number) => {
-  const response = await axios.get(`${baseURL}/countries/${id}?populate=latlng,capitalImage,currencies`);
-  return response.data;
+const getOneCountryById = (id: string) => {
+  const request = axios.get(`${baseURL}/countries/${id}?populate=latlng,capitalImage,currencies,flagImage`);
+  return request.then((response) => response.data);
 };
 
-export default { getAllCountries, getOneCountry };
+// const getOneCountry = async (id: number) => {
+//   const response = await axios.get(`${baseURL}/countries/${id}?populate=latlng,capitalImage,currencies`);
+//   return response.data;
+// };
+
+export default { getAllCountries, getOneCountryById };

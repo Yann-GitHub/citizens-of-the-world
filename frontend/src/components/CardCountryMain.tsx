@@ -9,13 +9,14 @@ type CardCountryMainProps = {
   capitalImage: string;
   flag: string;
   slug: string;
+  onClick: () => void; // Ajout de la props onClick
 };
 
-const CardCountryMain: React.FC<CardCountryMainProps> = ({ nameCommon, capital, capitalImage, flag, slug }) => {
-  console.log('///////////////////////////');
-  console.log(capital);
+const CardCountryMain: React.FC<CardCountryMainProps> = ({ nameCommon, capital, capitalImage, flag, slug, onClick }) => {
+  // console.log('/////CardCountryMainComponent/////');
+  // console.log(capital);
   console.log(slug);
-  console.log('///////////////////////////');
+  // console.log('//////////////////////////////////');
   return (
     <div className="card-country-main">
       <div className="card-country-main__title">
@@ -42,7 +43,7 @@ const CardCountryMain: React.FC<CardCountryMainProps> = ({ nameCommon, capital, 
         </div>
       </div>
       <div className="card-country-main__nav">
-        <Button className="card-country-main__nav__btn" variant="primary">
+        <Button onClick={onClick} className="card-country-main__nav__btn" variant="primary">
           Infos
         </Button>
         <Button className="card-country-main__nav__btn" variant="primary">
