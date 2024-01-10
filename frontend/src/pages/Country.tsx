@@ -15,8 +15,8 @@ import CardCountryDetails from '../components/CardCountryDetails';
 // import { Container } from 'react-bootstrap';
 
 const Country = () => {
-  //   console.log('///// Country Page /////');
-  //   console.log(useParams());
+  // console.log('///// Country Page /////');
+  // console.log(useParams());
   const { countryId } = useParams();
 
   const [country, setCountry] = useState<CountryType>();

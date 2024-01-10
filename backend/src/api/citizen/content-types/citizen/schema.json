@@ -50,9 +50,9 @@
       "required": true,
       "default": "Anglais"
     },
-    "country": {
+    "countries": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::country.country",
       "inversedBy": "citizens"
     }

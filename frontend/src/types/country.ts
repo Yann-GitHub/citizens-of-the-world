@@ -28,6 +28,40 @@ export type FlagImage = {
   };
 };
 
+export type Countries = {
+  data: Country[];
+};
+
+export type Citizens = {
+  data: Citizen[];
+};
+
+export type Picture = {
+  data: {
+    attributes: {
+      url: string;
+    };
+  };
+};
+
+export type Citizen = {
+  id: number;
+  attributes: {
+    city: string;
+    countries: Countries;
+    createdAt: string;
+    date: string;
+    email: string;
+    firstname: string;
+    langue: string;
+    lastName: string;
+    phoneNumber: string;
+    picture: Picture;
+    updatedAt: string;
+    publishedAt: string;
+  };
+};
+
 export type Country = {
   id: number;
   attributes: {
@@ -48,5 +82,12 @@ export type Country = {
     subregion: string;
     unMember: boolean;
     citizensNumber: number;
+    citizens: Citizens;
+  };
+};
+
+export type totalSubregionPerRegion = {
+  [key: string]: {
+    [key: string]: number;
   };
 };

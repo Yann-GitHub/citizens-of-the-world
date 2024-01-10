@@ -1,10 +1,15 @@
 .card-country-continent {
   background-color: #fff;
   width: 100%;
-  // height: max-content;
+  height: 100%;
+  //height: max-content;
   border-radius: 7px;
   box-shadow: 5px 7px 15px 1px #00000040;
   overflow: hidden;
+
+  &__img {
+    //height: 100%;
+  }
 
   &__image {
     object-fit: cover;
@@ -17,13 +22,15 @@
   &__content {
     padding: 14px;
     padding-bottom: 20px;
-    height: 100%;
+    height: auto;
   }
 
   &__text {
     padding: 0;
     padding-left: 10px;
     margin: 0;
+    font-size: 16px;
+    font-weight: 400;
   }
 
   &__title {

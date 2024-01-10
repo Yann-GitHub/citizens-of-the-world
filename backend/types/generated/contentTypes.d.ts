@@ -701,9 +701,9 @@ export interface ApiCitizenCitizen extends Schema.CollectionType {
     > &
       Attribute.Required &
       Attribute.DefaultTo<'Anglais'>;
-    country: Attribute.Relation<
+    countries: Attribute.Relation<
       'api::citizen.citizen',
-      'manyToOne',
+      'manyToMany',
       'api::country.country'
     >;
     createdAt: Attribute.DateTime;
@@ -787,15 +787,15 @@ export interface ApiCountryCountry extends Schema.CollectionType {
     linkGoogleMap: Attribute.String;
     flagImage: Attribute.Media;
     citizensNumber: Attribute.Integer;
-    citizens: Attribute.Relation<
-      'api::country.country',
-      'oneToMany',
-      'api::citizen.citizen'
-    >;
     sub_continent: Attribute.Relation<
       'api::country.country',
       'manyToOne',
       'api::sub-continent.sub-continent'
+    >;
+    citizens: Attribute.Relation<
+      'api::country.country',
+      'manyToMany',
+      'api::citizen.citizen'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

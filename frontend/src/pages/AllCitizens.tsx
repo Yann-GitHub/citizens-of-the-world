@@ -2,7 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import countriesService from '../services/api';
 
-import { Country as CountryType } from '../types/country';
+import { Citizen, Country as CountryType } from '../types/country';
 
 import iconArrowLeft from '../assets/arrow-left.svg';
 
@@ -13,11 +13,12 @@ import { Col, Row } from 'react-bootstrap';
 // import { Container } from 'react-bootstrap';
 
 const AllCitizens = () => {
-  //   console.log('///// Country Page /////');
-  //   console.log(useParams());
+  // console.log('///// Country Page /////');
+  // console.log(useParams());
   const { countryId } = useParams();
 
   const [country, setCountry] = useState<CountryType>();
+  const [allCitizens, setAllCitizens] = useState<Citizen[]>([]);
 
   useEffect(() => {
     if (countryId) {
@@ -25,11 +26,13 @@ const AllCitizens = () => {
         console.log('Response fulfilled - First data fetching - Single country');
         console.log(country);
         setCountry(country.data);
+        setAllCitizens(country.data.attributes.citizens.data);
       });
     }
   }, [countryId]);
 
-  // console.log(country);
+  console.log('///// AllCitizens Page /////');
+  console.log(allCitizens);
   return (
     <div className="allCitizens">
       <div className="allCitizens__header">
@@ -42,8 +45,36 @@ const AllCitizens = () => {
       <div className="allCitizens__image">
         <CardCountryImage capitalImage={country?.attributes.capitalImage.data.attributes.url} />
       </div>
+
+      {}
+
       <Row className="g-4">
-        <Col sm={12} md={6} lg={4} className="d-flex justify-content-center">
+        {allCitizens.map((citizen) => (
+          //   <div className="col-sm-12 col-md-6 col-lg-4" key={country.id}>
+          <Col sm={12} md={6} lg={4} className="d-flex justify-content-center" key={citizen.id}>
+            <CardCitizen
+              firstname={citizen.attributes.firstname}
+              date={citizen.attributes.date}
+              capital={citizen.attributes.city}
+              photo={citizen.attributes.picture.data.attributes.url}
+              email={citizen.attributes.email}
+              phoneNumber={citizen.attributes.phoneNumber}
+              countries={citizen.attributes.countries.data.map((country) => country.attributes.flag)}
+              lastname={citizen.attributes.lastName}
+            />
+            {/* <CardCountryMain
+              capital={country.attributes.capital}
+              nameCommon={country.attributes.nameCommon}
+              capitalImage={country.attributes.capitalImage.data.attributes.url}
+              flag={country.attributes.flag}
+              slug={country.attributes.slug}
+              onClickInfos={() => handleCardInfosClick(country.id)} // privilégier un lien
+              onClickCitizens={() => handleCardCitizensClick(country.id)} // privilégier un lien
+            /> */}
+          </Col>
+        ))}
+
+        {/* <Col sm={12} md={6} lg={4} className="d-flex justify-content-center">
           <CardCitizen />
         </Col>
         <Col sm={12} md={6} lg={4} className="d-flex justify-content-center">
@@ -63,7 +94,7 @@ const AllCitizens = () => {
         </Col>
         <Col sm={12} md={6} lg={4} className="d-flex justify-content-center">
           <CardCitizen />
-        </Col>
+        </Col> */}
       </Row>
     </div>
   );

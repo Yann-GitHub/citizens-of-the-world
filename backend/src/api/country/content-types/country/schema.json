@@ -77,17 +77,17 @@
     "citizensNumber": {
       "type": "integer"
     },
-    "citizens": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::citizen.citizen",
-      "mappedBy": "country"
-    },
     "sub_continent": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::sub-continent.sub-continent",
       "inversedBy": "countries"
+    },
+    "citizens": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::citizen.citizen",
+      "mappedBy": "countries"
     }
   }
 }

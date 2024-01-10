@@ -13,7 +13,9 @@ const CardContinent = ({ region, subregion }: CardContinentProps) => {
   // console.log(subregion);
   return (
     <div className="card-country-continent">
-      <img className="card-country-continent__image" src={imgWorldFromSpace} alt="img-world-from-space" />
+      <div className="card-country-continent__img">
+        <img className="card-country-continent__image" src={imgWorldFromSpace} alt="img-world-from-space" />
+      </div>
 
       <div className="card-country-continent__content">
         <h1 className="card-country-continent__title">

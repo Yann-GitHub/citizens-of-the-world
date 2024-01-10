@@ -4,20 +4,55 @@ import { useNavigate } from 'react-router-dom';
 import CardCountryMain from '../components/CardCountryMain';
 import countriesService from '../services/api';
 
-import { Country } from '../types/country';
+import { Country, totalSubregionPerRegion as Tsub } from '../types/country';
 import { Col, Row } from 'react-bootstrap';
+
+import totalSubregionPerRegion from '../utils/totalRegionAndSubregion';
 
 const Home = () => {
   // Custom hook possible
   const [initialCountries, setInitialCountries] = useState<Country[]>([]);
 
+  const [totalSubRegion, setTotalSubRegion] = useState<Tsub | null>({});
+
   useEffect(() => {
     countriesService.getAllCountries().then((allCountries) => {
       console.log('Response fulfilled - First data fetching');
+      console.log('<---------->');
       console.log(allCountries);
+      console.log('<---------->');
       setInitialCountries(allCountries.data);
     });
+
+    const fetchData = async () => {
+      const totalSubRegion = await totalSubregionPerRegion();
+      return totalSubRegion;
+    };
+
+    fetchData().then((totalSubRegion) => {
+      setTotalSubRegion(totalSubRegion);
+      // console.log(totalSubRegion);
+    });
   }, []);
+
+  ///////////////// SUPPRIMER CE CODE ///////////////////////
+  // Filtrer les pays dont la capital est "Paris"
+  // const test = initialCountries.filter((country) => country.attributes.capital === 'Paris');
+  // console.log(test);
+
+  // const fetchData = async () => {
+  //   const totalSubRegion = await totalSubregionPerRegion();
+  //   return totalSubRegion;
+  // };
+
+  // const test = await fetchData();
+  // console.log(test);
+  /////////////////////////////////////////////////////
+
+  console.log(totalSubRegion);
+  console.log('++++++++++++++');
+  console.log(initialCountries);
+  console.log('++++++++++++++');
 
   const navigate = useNavigate(); // Hook from react Router
   const handleCardInfosClick = (countryId: number) => {
