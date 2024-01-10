@@ -1,6 +1,6 @@
 # Citizens of the World
 
-Citizens of the World is a full-stack application built with Strapi for the backend and React for the frontend.
+Citizens of the World is a full-stack application built using Strapi, a highly customizable, open-source Headless CMS, as the backend, and React coupled with TypeScript, a powerful combination for building user interfaces, for the frontend.
 
 ## Getting Started
 
@@ -15,69 +15,60 @@ These instructions will get you a copy of the project up and running on your loc
 
 1. Clone the repository
 
-```
-git clone <repository-url>
+```bash
+git clone git@github.com:Yann-GitHub/citizens-of-the-world.git
 ```
 
 2. Install backend dependencies
 
-```
+```bash
 cd backend
 npm install
 ```
 
 3. Install frontend dependencies
 
-```
+```bash
 cd ../frontend
 npm install
 ```
 
 ### Running the application
 
-Backend
-From the backend directory:
+#### Backend
 
-To start the application with autoReload enabled:
+From the `backend` directory:
 
-```
+1. To start the application with autoReload enabled (the app will automatically reload if you change any of the source files):
+
+```bash
 npm run develop
 ```
 
-To start the application with autoReload disabled:
+2. To start the application with autoReload disabled (useful for a production environment):
 
-```
+```bash
 npm run start
 ```
 
-To build the admin panel:
+3. To build the admin panel (this will create a production-ready build of your application):
 
-```
+```bash
 npm run build
 ```
 
-Frontend
-From the frontend directory:
+#### Frontend
 
-To start the application in development mode:
+From the `frontend` directory:
 
-```
+1. To start the application in development mode (the app will automatically reload if you change any of the source files):
+
+```bash
 npm run dev
 ```
 
-To build the application for production:
+2. To build the application for production (this will create a production-ready build of your application):
 
-```
+```bash
 npm run build
 ```
-
-###Deployment
-Add additional notes about how to deploy this on a live system.
-
-###Built With
-Strapi - The backend framework used
-React - The frontend framework used
-Vite - Build tool and development server
-
-###Contributing
-Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
