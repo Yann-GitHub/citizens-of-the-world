@@ -95,52 +95,28 @@ const MydModal: React.FC<MydModalProps> = ({
               </Row>
             </Col>
           </Row>
-          {/* <Row>
-            <Col xs={6} md={4}>
-              <div className="modal-image-wrapper">
-                <img className="modal-image" src={`http://localhost:1338${photo}`} alt="image-user" />
-              </div>
-            </Col>
-            <Col xs={12} md={3}>
-              <div>
-                <div>
-                  <img src={iconMapoint} alt="city" />
-                  {capital}
-                </div>
-                <div>
-                  <img src={iconCalendar} alt="calendar" />
-                  {date}
-                </div>
-              </div>
-            </Col>
-            <Col xs={12} md={5}>
-              <div>
-                <img src={letter} alt="letter" />
-                {email}
-                <br />
-                <img src={phone} alt="letter" />
-                {phoneNumber}
-              </div>
-            </Col>
-          </Row>
-
-          <Row>
-            <Col xs={6} md={4}></Col>
-            <Col xs={6} md={8}>
-              <div className="modal-countries-wrapper">
-                <img src={meeting} alt="meeting" />
-                {countries.map((country, index) => (
-                  <div className="modal-flag" key={index}>
-                    {country}
-                  </div>
-                ))}
-              </div>
-            </Col>
-          </Row> */}
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        <div className="footer-left">
+        <Container>
+          <Row>
+            <Col xs={12} md={6}>
+              <div className="footer-left">
+                <Button onClick={props.onHide}>Envoyer un message</Button>
+                <Button onClick={props.onHide}>Ajouter en ami</Button>
+              </div>
+            </Col>
+            <Col xs={12} md={6}>
+              <div className="footer-right">
+                <Button variant="danger" onClick={props.onHide}>
+                  Signaler le profil
+                </Button>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </Modal.Footer>
+      {/* <div className="footer-left">
           <Button onClick={props.onHide}>Envoyer un message</Button>
           <Button onClick={props.onHide}>Ajouter en ami</Button>
         </div>
@@ -149,7 +125,7 @@ const MydModal: React.FC<MydModalProps> = ({
             Signaler le profil
           </Button>
         </div>
-      </Modal.Footer>
+      </Modal.Footer> */}
     </Modal>
   );
 };
