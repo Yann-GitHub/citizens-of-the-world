@@ -15,17 +15,17 @@ const CartUnitedNations = ({ isMember = false }: CartUnitedNationsProps) => {
       <div className="card-country-un__content">
         <h1 className="card-country-un__title">Nations Unis</h1>
         <div className="card-country-un__totalMembers">
-          <img src={iconLogoUn} alt="icon-logo-un" />
+          <img className="card-country-un__icon" src={iconLogoUn} alt="icon-logo-un" />
           <p className="card-country-un__txt">185 pays membres</p>
         </div>
         {isMember ? (
           <div className="card-country-un__realMembers">
-            <img src={iconUnMember} alt="icon-un-member" />
+            <img className="card-country-un__icon" src={iconUnMember} alt="icon-un-member" />
             <p className="card-country-un__txt">Pays membre</p>
           </div>
         ) : (
           <div className="card-country-un__realMembers">
-            <img src={iconCross} alt="icon-cross" />
+            <img className="card-country-un__icon" src={iconCross} alt="icon-cross" />
             <p className="card-country-un__txt">Pays non membre</p>
           </div>
         )}
