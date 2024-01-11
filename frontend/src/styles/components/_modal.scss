@@ -2,8 +2,8 @@
   filter: blur(2px);
 }
 
-.modal-backdrop {
-}
+// .modal-backdrop {
+// }
 
 .modal {
   .modal-dialog {
@@ -47,7 +47,7 @@
           height: 100%;
           .modal-image {
             border-radius: 100%;
-
+            border: 1px solid #0c1374;
             height: 100%;
             width: auto;
 

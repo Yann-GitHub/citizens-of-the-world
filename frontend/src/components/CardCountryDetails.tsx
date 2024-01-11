@@ -31,19 +31,38 @@ const CardCountryDetails = ({
         <h1 className="card-country-details__title">{nameCommon}</h1>
         <img className="card-country-details__image" src={`http://localhost:1338${flagImage}`} alt="flag-image" />
         <div className="card-country-details__infos">
-          <p>Nom officiel: {nameOfficial}</p>
-          <p>Capital: {capital}</p>
-          <p>Population: {population}</p>
-          <p>Langue: {languages}</p>
+          <p>
+            <span>Nom officiel : </span>
+            {nameOfficial}
+          </p>
+          <p>
+            <span>Capital : </span>
+            {capital}
+          </p>
+          <p>
+            <span>Population : </span>
+            {population}
+          </p>
+          <p>
+            <span>Langue : </span>
+            {languages}
+          </p>
           {latlng && (
             <>
-              <p>Latitude: {latlng.lat}</p>
-              <p>Longitude: {latlng.lng}</p>
+              <p>
+                <span>Latitude : </span>
+                {latlng.lat}
+              </p>
+              <p>
+                <span>Longitude : </span>
+                {latlng.lng}
+              </p>
             </>
           )}
           {currencies && (
             <p>
-              Monnaie: {currencies.name} - {currencies.symbol}
+              <span>Monnaie : </span>
+              {currencies.name} - {currencies.symbol}
             </p>
           )}
 
