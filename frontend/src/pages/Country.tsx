@@ -1,34 +1,18 @@
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import countriesService from '../services/api';
-
 import { Country as CountryType } from '../types/country';
-
 import iconArrowLeft from '../assets/arrow-left.svg';
-
 import CardCoatOfArms from '../components/CardCoatOfArms';
 import CardContinent from '../components/CardContinent';
 import CartUnitedNations from '../components/CardUnitedNations';
 import CardCountryImage from '../components/CardCountryImage';
 import CardCountryDetails from '../components/CardCountryDetails';
 
-// import { Container } from 'react-bootstrap';
-
 const Country = () => {
-  // console.log('///// Country Page /////');
   // console.log(useParams());
   const { countryId } = useParams();
-
   const [country, setCountry] = useState<CountryType>();
-
-  // Ts error : Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
-  //   useEffect(() => {
-  //     countriesService.getOneCountryById(countryId).then((country) => {
-  //       console.log('Response fulfilled - First data fetching - Single country');
-  //       console.log(country);
-  //       setCountry(country.data);
-  //     });
-  //   }, [countryId]);
 
   useEffect(() => {
     if (countryId) {
@@ -79,7 +63,10 @@ const Country = () => {
           </div>
         </div>
         <div className="country__main__cardContinent">
-          <CardContinent region={country?.attributes.region} subregion={country?.attributes.subregion} />
+          <CardContinent
+            subContinent={country?.attributes.sub_continent.data.attributes.name}
+            continent={country?.attributes.sub_continent.data.attributes.continent.data.attributes.name}
+          />
         </div>
       </div>
     </div>

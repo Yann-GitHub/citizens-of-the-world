@@ -4,7 +4,7 @@ const totalSubregionPerRegion = async () => {
   const allCountries = await countriesService.getAllCountriesExt();
   const regionSubregionCount = {};
 
-  allCountries.forEach((country) => {
+  allCountries.forEach((country: string) => {
     if (!regionSubregionCount[country.region]) {
       regionSubregionCount[country.region] = {};
     }
@@ -15,6 +15,8 @@ const totalSubregionPerRegion = async () => {
   });
 
   return regionSubregionCount;
+  console.log('yooooooooo');
+  console.log(regionSubregionCount);
 };
 
 export default totalSubregionPerRegion;

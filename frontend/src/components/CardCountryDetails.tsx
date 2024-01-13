@@ -23,8 +23,8 @@ const CardCountryDetails = ({
   latlng,
   flagImage,
 }: CardCountryDetailsProps) => {
-  console.log(currencies);
-  console.log(latlng);
+  // console.log(currencies);
+  // console.log(latlng);
   return (
     <div className="card-country-details">
       <div className="card-country-details__content">

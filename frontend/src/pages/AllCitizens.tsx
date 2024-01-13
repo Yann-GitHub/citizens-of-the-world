@@ -1,16 +1,11 @@
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import countriesService from '../services/api';
-
 import { Citizen, Country as CountryType } from '../types/country';
-
 import iconArrowLeft from '../assets/arrow-left.svg';
-
 import CardCountryImage from '../components/CardCountryImage';
 import CardCitizen from '../components/CardCitizen';
-
 import { Col, Row } from 'react-bootstrap';
-// import { Container } from 'react-bootstrap';
 
 const AllCitizens = () => {
   // console.log('///// Country Page /////');
@@ -50,7 +45,6 @@ const AllCitizens = () => {
 
       <Row className="g-4">
         {allCitizens.map((citizen) => (
-          //   <div className="col-sm-12 col-md-6 col-lg-4" key={country.id}>
           <Col sm={12} md={6} lg={4} className="d-flex justify-content-center" key={citizen.id}>
             <CardCitizen
               firstname={citizen.attributes.firstname}
@@ -62,39 +56,8 @@ const AllCitizens = () => {
               countries={citizen.attributes.countries.data.map((country) => country.attributes.flag)}
               lastname={citizen.attributes.lastName}
             />
-            {/* <CardCountryMain
-              capital={country.attributes.capital}
-              nameCommon={country.attributes.nameCommon}
-              capitalImage={country.attributes.capitalImage.data.attributes.url}
-              flag={country.attributes.flag}
-              slug={country.attributes.slug}
-              onClickInfos={() => handleCardInfosClick(country.id)} // privilégier un lien
-              onClickCitizens={() => handleCardCitizensClick(country.id)} // privilégier un lien
-            /> */}
           </Col>
         ))}
-
-        {/* <Col sm={12} md={6} lg={4} className="d-flex justify-content-center">
-          <CardCitizen />
-        </Col>
-        <Col sm={12} md={6} lg={4} className="d-flex justify-content-center">
-          <CardCitizen />
-        </Col>
-        <Col sm={12} md={6} lg={4} className="d-flex justify-content-center">
-          <CardCitizen />
-        </Col>
-        <Col sm={12} md={6} lg={4} className="d-flex justify-content-center">
-          <CardCitizen />
-        </Col>
-        <Col sm={12} md={6} lg={4} className="d-flex justify-content-center">
-          <CardCitizen />
-        </Col>
-        <Col sm={12} md={6} lg={4} className="d-flex justify-content-center">
-          <CardCitizen />
-        </Col>
-        <Col sm={12} md={6} lg={4} className="d-flex justify-content-center">
-          <CardCitizen />
-        </Col> */}
       </Row>
     </div>
   );

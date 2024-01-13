@@ -62,6 +62,21 @@ export type Citizen = {
   };
 };
 
+export type SubContinent = {
+  data: {
+    attributes: {
+      name: string;
+      continent: {
+        data: {
+          attributes: {
+            name: string;
+          };
+        };
+      };
+    };
+  };
+};
+
 export type Country = {
   id: number;
   attributes: {
@@ -77,17 +92,33 @@ export type Country = {
     latlng: LatLng;
     linkGoogleMap: string;
     population: number;
-    region: string;
+    sub_continent: SubContinent;
     slug: string;
-    subregion: string;
     unMember: boolean;
     citizensNumber: number;
     citizens: Citizens;
   };
 };
 
-export type totalSubregionPerRegion = {
-  [key: string]: {
-    [key: string]: number;
-  };
+// export type totalSubregionPerRegion = {
+//   [key: string]: {
+//     [key: string]: number;
+//   };
+// };
+
+export type Continent = {
+  [region: string]: CountryCounts;
+};
+
+export type CountryCounts = {
+  [subregion: string]: number;
+};
+
+export type MyObjContinent = {
+  Oceania: Continent;
+  Africa: Continent;
+  Europe: Continent;
+  Asia: Continent;
+  Americas: Continent;
+  Antarctic: CountryCounts;
 };

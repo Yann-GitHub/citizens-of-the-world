@@ -8,8 +8,6 @@
   padding-bottom: 20px;
 
   &__content {
-    // padding: 14px;
-    // padding-bottom: 20px;
     overflow: hidden;
     height: 100%;
   }
@@ -24,13 +22,8 @@
     margin: 0;
   }
   &__coat {
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    // height: 300px;
     max-height: 300px;
     width: 100%;
-    //height: auto;
     object-fit: cover;
     margin: 0 auto;
     overflow: hidden;

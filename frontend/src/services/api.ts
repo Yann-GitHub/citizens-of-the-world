@@ -22,7 +22,7 @@ const getAllCountries = () => {
 
 const getOneCountryById = (id: string) => {
   const request = axios.get(
-    `${baseURL}/countries/${id}?populate=latlng,capitalImage,currencies,flagImage,sub_continent,citizens.picture,citizens.countries`
+    `${baseURL}/countries/${id}?populate=latlng,capitalImage,currencies,flagImage,sub_continent.continent,citizens.picture,citizens.countries`
   );
   return request.then((response) => response.data);
 };

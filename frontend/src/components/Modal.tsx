@@ -7,11 +7,9 @@ import Row from 'react-bootstrap/Row';
 
 import iconCalendar from '../assets/calendar.svg';
 import iconMapoint from '../assets/map-point.svg';
-// import iconPeople from '../assets/group.svg';
 import phone from '../assets/phone.svg';
 import letter from '../assets/letter.svg';
 import meeting from '../assets/meeting.svg';
-// import { isAccordionItemSelected } from 'react-bootstrap/esm/AccordionContext';
 
 type MydModalProps = {
   firstname: string;
@@ -116,16 +114,6 @@ const MydModal: React.FC<MydModalProps> = ({
           </Row>
         </Container>
       </Modal.Footer>
-      {/* <div className="footer-left">
-          <Button onClick={props.onHide}>Envoyer un message</Button>
-          <Button onClick={props.onHide}>Ajouter en ami</Button>
-        </div>
-        <div className="footer-right">
-          <Button variant="danger" onClick={props.onHide}>
-            Signaler le profil
-          </Button>
-        </div>
-      </Modal.Footer> */}
     </Modal>
   );
 };
