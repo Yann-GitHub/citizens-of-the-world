@@ -18,16 +18,16 @@ const AllCitizens = () => {
   useEffect(() => {
     if (countryId) {
       countriesService.getOneCountryById(countryId).then((country) => {
-        console.log('Response fulfilled - First data fetching - Single country');
-        console.log(country);
+        // console.log('Response fulfilled - First data fetching - Single country');
+        // console.log(country);
         setCountry(country.data);
         setAllCitizens(country.data.attributes.citizens.data);
       });
     }
   }, [countryId]);
 
-  console.log('///// AllCitizens Page /////');
-  console.log(allCitizens);
+  // console.log('///// AllCitizens Page /////');
+  // console.log(allCitizens);
   return (
     <div className="allCitizens">
       <div className="allCitizens__header">

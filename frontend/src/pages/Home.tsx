@@ -1,19 +1,13 @@
 import { useEffect, useState } from 'react';
-// import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import CardCountryMain from '../components/CardCountryMain';
 import countriesService from '../services/api';
-
 import { Country } from '../types/country';
 import { Col, Row } from 'react-bootstrap';
-
-// import totalSubregionPerRegion from '../utils/totalRegionAndSubregion';
 
 const Home = () => {
   // Custom hook possible
   const [initialCountries, setInitialCountries] = useState<Country[]>([]);
-
-  // const [totalSubRegion, setTotalSubRegion] = useState<Tsub | null>({});
 
   useEffect(() => {
     countriesService.getAllCountries().then((allCountries) => {
@@ -33,12 +27,10 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleCardInfosClick = (countryId: number) => {
-    // Navigate to the country page with the countryId
     navigate(`/country/${countryId}`); // Dynamic route
   };
 
   const handleCardCitizensClick = (countryId: number) => {
-    // Navigate to the allCitizens page with the countryId
     navigate(`/all-citizens/${countryId}`); // Dynamic route
   };
 
@@ -54,8 +46,8 @@ const Home = () => {
               capitalImage={country.attributes.capitalImage.data.attributes.url}
               flag={country.attributes.flag}
               slug={country.attributes.slug}
-              onClickInfos={() => handleCardInfosClick(country.id)} // privilégier un lien
-              onClickCitizens={() => handleCardCitizensClick(country.id)} // privilégier un lien
+              onClickInfos={() => handleCardInfosClick(country.id)}
+              onClickCitizens={() => handleCardCitizensClick(country.id)}
             />
           </Col>
         ))}

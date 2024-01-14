@@ -1,10 +1,15 @@
 import countriesService from '../services/api';
 
+type country = {
+  region: string;
+  subregion: string;
+};
+
 const totalSubregionPerRegion = async () => {
   const allCountries = await countriesService.getAllCountriesExt();
-  const regionSubregionCount = {};
+  const regionSubregionCount: { [key: string]: { [key: string]: number } } = {};
 
-  allCountries.forEach((country: string) => {
+  allCountries.map((country: country) => {
     if (!regionSubregionCount[country.region]) {
       regionSubregionCount[country.region] = {};
     }
@@ -14,9 +19,10 @@ const totalSubregionPerRegion = async () => {
     regionSubregionCount[country.region][country.subregion]++;
   });
 
-  return regionSubregionCount;
-  console.log('yooooooooo');
+  // console.log('yooooooooo');
   console.log(regionSubregionCount);
+  console.log(allCountries);
+  return regionSubregionCount;
 };
 
 export default totalSubregionPerRegion;
