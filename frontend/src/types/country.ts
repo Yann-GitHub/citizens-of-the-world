@@ -100,25 +100,15 @@ export type Country = {
   };
 };
 
-// export type totalSubregionPerRegion = {
-//   [key: string]: {
-//     [key: string]: number;
-//   };
-// };
-
-export type Continent = {
-  [region: string]: CountryCounts;
+export type CountryExt = {
+  region: string;
+  subregion: string;
 };
 
-export type CountryCounts = {
-  [subregion: string]: number;
+export type RegionSubregionCountResult = {
+  [key: string]: Region;
 };
 
-export type MyObjContinent = {
-  Oceania: Continent;
-  Africa: Continent;
-  Europe: Continent;
-  Asia: Continent;
-  Americas: Continent;
-  Antarctic: CountryCounts;
+export type Region = {
+  [key: string]: number;
 };

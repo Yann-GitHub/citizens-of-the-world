@@ -1,13 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import MydModal from './Modal';
-// import iconCity from '../assets/city.png';
-// import iconPeople from '../assets/group.png';
 import iconMap from '../assets/map-point.svg';
 import iconCalendar from '../assets/calendar.svg';
-//import profileTest from '../assets/test-pic.jpg';
-
-//import imageTest from '../assets/un-member.svg';
 import React from 'react';
 
 type CardCitizenProps = {

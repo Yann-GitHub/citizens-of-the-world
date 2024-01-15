@@ -8,9 +8,8 @@ import CardCitizen from '../components/CardCitizen';
 import { Col, Row } from 'react-bootstrap';
 
 const AllCitizens = () => {
-  // console.log('///// Country Page /////');
-  // console.log(useParams());
   const { countryId } = useParams();
+  // console.log(useParams());
 
   const [country, setCountry] = useState<CountryType>();
   const [allCitizens, setAllCitizens] = useState<Citizen[]>([]);
@@ -26,7 +25,6 @@ const AllCitizens = () => {
     }
   }, [countryId]);
 
-  // console.log('///// AllCitizens Page /////');
   // console.log(allCitizens);
   return (
     <div className="allCitizens">

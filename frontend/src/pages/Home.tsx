@@ -1,28 +1,10 @@
-import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CardCountryMain from '../components/CardCountryMain';
-import countriesService from '../services/api';
-import { Country } from '../types/country';
 import { Col, Row } from 'react-bootstrap';
+import { useCountries } from '../hooks/useCountries';
 
 const Home = () => {
-  // Custom hook possible
-  const [initialCountries, setInitialCountries] = useState<Country[]>([]);
-
-  useEffect(() => {
-    countriesService.getAllCountries().then((allCountries) => {
-      console.log('Response fulfilled - First data fetching');
-      console.log('<---------->');
-      console.log(allCountries);
-      console.log('<---------->');
-      setInitialCountries(allCountries.data);
-    });
-  }, []);
-
-  // console.log(totalSubRegion);
-  // console.log('++++++++++++++');
-  // console.log(initialCountries);
-  // console.log('++++++++++++++');
+  const initialCountries = useCountries();
 
   const navigate = useNavigate();
 

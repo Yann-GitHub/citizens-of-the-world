@@ -1,30 +1,16 @@
-import { Link, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import countriesService from '../services/api';
-import { Country as CountryType } from '../types/country';
+import { Link } from 'react-router-dom';
 import iconArrowLeft from '../assets/arrow-left.svg';
 import CardCoatOfArms from '../components/CardCoatOfArms';
 import CardContinent from '../components/CardContinent';
 import CartUnitedNations from '../components/CardUnitedNations';
 import CardCountryImage from '../components/CardCountryImage';
 import CardCountryDetails from '../components/CardCountryDetails';
+import { useCountry } from '../hooks/useCountry';
 
 const Country = () => {
-  // console.log(useParams());
-  const { countryId } = useParams();
-  const [country, setCountry] = useState<CountryType>();
+  const country = useCountry();
 
-  useEffect(() => {
-    if (countryId) {
-      countriesService.getOneCountryById(countryId).then((country) => {
-        console.log('Response fulfilled - First data fetching - Single country');
-        console.log(country);
-        setCountry(country.data);
-      });
-    }
-  }, [countryId]);
-
-  console.log(country);
+  // console.log(country);
   return (
     <div className="country">
       <div className="country__header">

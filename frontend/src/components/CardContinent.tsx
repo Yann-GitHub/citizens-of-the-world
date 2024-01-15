@@ -1,10 +1,8 @@
 import iconWorld from '../assets/world.svg';
 import iconMap from '../assets/map-point.svg';
 import imgWorldFromSpace from '../assets/img-from-space.svg';
-import totalSubregionPerRegion from '../utils/totalRegionAndSubregion';
-import { MyObjContinent, Continent, CountryCounts } from '../types/country';
-
-import { useState, useEffect } from 'react';
+import { getTotalCountriesInContinent, getTotalCountriesInSubContinent } from '../utils/getTotal';
+import { useCardContinent } from '../hooks/useCardContinent';
 
 type CardContinentProps = {
   subContinent?: string;
@@ -15,30 +13,15 @@ const CardContinent = ({ subContinent, continent }: CardContinentProps) => {
   // console.log(region):
   // console.log(subregion);
 
-  const [myObjContinent, setMyObjContinent] = useState<MyObjContinent | null>();
-  // const [totalSubRegion, setTotalSubRegion] = useState<Tsub | null>({});
+  const myObjContinent = useCardContinent();
+  // console.log(myObjContinent);
 
-  useEffect(() => {
-    const continentsData = async () => {
-      const data = await totalSubregionPerRegion();
-      setMyObjContinent(data);
-    };
-
-    continentsData();
-  }, []);
-
-  console.log(myObjContinent);
-
-  if (!continent || !myObjContinent) {
+  if (!subContinent || !continent || !myObjContinent) {
     return <div>Loading...</div>;
   }
 
-  const totalCountriesInContinent = Object.values(myObjContinent[`${continent}`] as number[])
-    .reduce((a, b) => a + b, 0)
-    .toString();
-  // console.log(typeof totalCountriesInContinent);
-
-  const totalCountriesInSubContinent = subContinent ? myObjContinent[continent][subContinent].toString() : '';
+  const totalCountriesInContinent = getTotalCountriesInContinent(myObjContinent, continent);
+  const totalCountriesInSubContinent = getTotalCountriesInSubContinent(myObjContinent, continent, subContinent);
 
   return (
     <div className="card-country-continent">
